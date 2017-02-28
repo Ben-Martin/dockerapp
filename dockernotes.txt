@@ -1,0 +1,68 @@
+
+
+# git project
+
+
+
+
+
+
+# -----------------------------------------------
+# RUN NODE LOCALLY 
+# -----------------------------------------------
+npm start
+
+
+
+
+# -----------------------------------------------
+# RUN LOCAL DOCKER WITH NODE/POSTGRES INSTANCE
+# -----------------------------------------------
+
+
+# set up postgres docker container
+docker run --name docker-postgres -e POSTGRES_USER=postgresuser -e POSTGRES_PASSWORD=postgrespassword -e POSTGRES_DB=dockerapp_test -d benmartin/database
+
+##### SET NODE ENV #####
+
+# create a docker container
+docker build -t benmartin/dockerapp .
+
+# run said container
+docker run --name dockerapp -p 80:3000 --link docker-postgres:postgres -d benmartin/dockerapp
+
+
+
+
+# -----------------------------------------------
+# RUN LOCAL DOCKER CONNECTING TO RDS
+# -----------------------------------------------
+
+##### REMOVE EXISTING CONTAINERS #####
+
+##### SET NODE ENV #####
+
+# create a docker container
+docker build -t benmartin/dockerapp .
+
+# run said container
+docker run --name dockerapp -p 80:3000 --link docker-postgres:postgres -d benmartin/dockerapp
+
+
+
+
+# -----------------------------------------------
+# DEPLOY TO AWS ECS
+# -----------------------------------------------
+
+
+
+
+
+##### COVER COMMANDS #####
+
+# query the insatnce
+docker exec -it benmartin/dockerapp /bin/bash
+
+# check insatnce logs
+docker logs benmartin/dockerapp
