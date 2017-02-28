@@ -19,7 +19,6 @@ npm start
 # RUN LOCAL DOCKER WITH NODE/POSTGRES INSTANCE
 # -----------------------------------------------
 
-
 # set up postgres docker container
 docker run --name docker-postgres -e POSTGRES_USER=postgresuser -e POSTGRES_PASSWORD=postgrespassword -e POSTGRES_DB=dockerapp_test -d benmartin/database
 
@@ -54,6 +53,14 @@ docker run --name dockerapp -p 80:3000 --link docker-postgres:postgres -d benmar
 # -----------------------------------------------
 # DEPLOY TO AWS ECS
 # -----------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
