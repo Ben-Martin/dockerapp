@@ -19,6 +19,43 @@
           <input type="submit" value="delete" />
         </form>
       </div>
+<!--
+      <form action="/users/<%= user.id %>/listings/create" method="post">
+        <label>
+          Name:
+          <input name="title" />
+        </label>
+        <label>
+          Description:
+          <textarea name="description"></textarea>
+        </label>
+        <label>
+          Price:
+          <input type="number" name="price" />
+        </label>
+        <input type="submit" value="Create listing" />
+      </form>
+
+      <% if (user.Listings) { %>
+        <ul>
+          <% user.Listings.forEach(function(listing) { %>
+            <li>
+              <div>
+                <%= listing.title %> - <%= listing.price %>
+              </div>
+              <div>
+                <%= listing.description %>
+              </div>
+              <div>
+                <form action="/users/<%= user.id %>/listings/delete" method="post">
+                  <input type="submit" value="delete" />
+                </form>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+      -->
     </li>
   <% }) %>
 </ul>

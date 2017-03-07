@@ -2,7 +2,7 @@
 
 # git project
 
-
+git@github.com:Ben-Martin/dockerapp.git
 
 
 
@@ -54,13 +54,18 @@ docker run --name dockerapp -p 80:3000 --link docker-postgres:postgres -d benmar
 # DEPLOY TO AWS ECS
 # -----------------------------------------------
 
+# login to AWS
+aws ecr get-login --region ap-southeast-2
+
+# build aws container
+docker build -t dockerapp .
 
 
+# register container with AWS
+docker tag dockerapp:latest 626055721331.dkr.ecr.ap-southeast-2.amazonaws.com/dockerapp:latest
 
-
-
-
-
+# push container to AWS
+docker push 626055721331.dkr.ecr.ap-southeast-2.amazonaws.com/dockerapp:latest
 
 
 
@@ -70,6 +75,25 @@ docker run --name dockerapp -p 80:3000 --link docker-postgres:postgres -d benmar
 
 # query the insatnce
 docker exec -it benmartin/dockerapp /bin/bash
+docker exec -it benmartin/database /bin/bash
 
 # check insatnce logs
 docker logs benmartin/dockerapp
+
+
+
+##### AWS TERMINAL CMDS #####
+
+# create cluster
+
+# create task definition
+
+# create service
+
+# update service
+
+# udpate security group
+
+
+# set cluster running count to 0 so it can be stopped
+aws ecs update-service --service dockerapp --cluster my-cluster --desired-count 0
